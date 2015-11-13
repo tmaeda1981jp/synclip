@@ -17,11 +17,11 @@ class ClipboardDetector:
     def watch(self):
         while True:
             text = pyperclip.paste()
-            self.append(text)
+            self.memorize(text)
             time.sleep(.1)
 
 
-    def append(self, text):
+    def memorize(self, text):
         if text not in self.__memos:
             self.__memos.append(text);
             if 10 <= len(self.__memos):
