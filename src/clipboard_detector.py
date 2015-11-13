@@ -10,8 +10,8 @@ import pyperclip
 class ClipboardDetector:
 
 
-    def __init__(self):
-        self.__memos = []
+    def __init__(self, memos=[]):
+        self.__memos = memos
 
 
     def watch(self):
@@ -29,5 +29,5 @@ class ClipboardDetector:
             print ''.join(' | '. join(self.__memos))
 
 
-clipboard = Clipboard()
+clipboard = ClipboardDetector()
 clipboard.watch()
