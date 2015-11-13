@@ -26,8 +26,4 @@ class ClipboardDetector:
             self.__memos.append(text);
             if 10 <= len(self.__memos):
                 self.__memos.pop(0)
-            print ''.join(' | '. join(self.__memos))
-
-
-clipboard = ClipboardDetector()
-clipboard.watch()
+#            print ''.join(' | '. join(self.__memos))
