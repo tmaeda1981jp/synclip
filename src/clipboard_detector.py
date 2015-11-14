@@ -5,25 +5,22 @@ import time
 import sys
 import os
 import pyperclip
+import threading
+from Queue import Queue
+
+class ClipboardDetector(threading.Thread):
 
 
-class ClipboardDetector:
+    def __init__(self, queue):
+        self.__queue = queue
 
 
-    def __init__(self, memos=[]):
-        self.__memos = memos
-
-
-    def watch(self):
+    def run(self):
         while True:
             text = pyperclip.paste()
             self.memorize(text)
             time.sleep(.1)
 
-
     def memorize(self, text):
-        if text not in self.__memos:
-            self.__memos.append(text);
-            if 10 <= len(self.__memos):
-                self.__memos.pop(0)
-#            print ''.join(' | '. join(self.__memos))
+        if text not in self.__queue.queue:
+            self.__queue.put(text);
