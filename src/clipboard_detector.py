@@ -22,13 +22,12 @@ class ClipboardDetector(threading.Thread):
             text = pyperclip.paste()
             self.memorize(text)
             time.sleep(1)
-        print 'stopped correctly'
+        print 'stopped correctly clipboard_detector'
 
 
     def memorize(self, text):
         if text not in self.__queue.queue:
             self.__queue.put(text)
-            print text
 
 
     def stop(self):
